@@ -28,6 +28,7 @@ async fn main() -> Result<(), Error> {
             commands: vec![
                 commands::roll::roll(),
                 commands::config::config(),
+                commands::help::help(),
             ],
             ..Default::default()
         })

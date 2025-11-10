@@ -4,11 +4,12 @@ use crate::{
 };
 use std::str::FromStr;
 
-/// Comandos para configurar o bot neste servidor
 #[poise::command(
     slash_command,
     subcommands("language"),
-    required_permissions = "ADMINISTRATOR"
+    required_permissions = "ADMINISTRATOR",
+    description_localized("pt-BR", "Comando-pai para todas as configurações do bot."),
+    description_localized("en-US", "Parent command for all bot configurations.")
 )]
 pub async fn config(ctx: Context<'_>) -> Result<(), Error> {
     let lang = if let Some(guild_id) = ctx.guild_id() {
@@ -22,17 +23,21 @@ pub async fn config(ctx: Context<'_>) -> Result<(), Error> {
     Ok(())
 }
 
-/// Define o idioma do bot para este servidor
-#[poise::command(slash_command, guild_only = true)]
+#[poise::command(
+    slash_command, 
+    guild_only = true,
+    description_localized("pt-BR", "Define o idioma do bot para este servidor."),
+    description_localized("en-US", "Sets the bot's language for this server.")
+)]
 pub async fn language(
     ctx: Context<'_>,
-    #[description = "O idioma a ser usado (pt-br ou en-us)"]
+    #[description_localized("pt-BR", "O idioma a ser usado (pt-br ou en-us)")]
+    #[description_localized("en-US", "The language to use (pt-br or en-us)")]
     #[choices("Português (BR)", "English")]
-    lang_choice: &str, // <-- A MUDANÇA ESTÁ AQUI (de String para &str)
+    lang_choice: &str,
 ) -> Result<(), Error> {
     let guild_id = ctx.guild_id().unwrap();
 
-    // O resto do seu código já funciona perfeitamente com &str!
     let lang = match Language::from_str(lang_choice) {
         Ok(lang) => lang,
         Err(_) => {

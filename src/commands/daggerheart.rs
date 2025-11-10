@@ -1,16 +1,37 @@
 use rand::Rng;
-use poise::CreateReply;
+use poise::{CreateReply, ChoiceParameter};
 use poise::serenity_prelude as serenity;
 use crate::{Context, Error, localization::{get_strings, Language}};
 
-/// Rola dados no formato Daggerheart
-#[poise::command(slash_command)]
+#[derive(Debug, ChoiceParameter)]
+pub enum AdvantageState {
+    #[name = "Vantagem (+1d6)"]
+    #[name_localized("en-US", "Advantage (+1d6)")]
+    Advantage,
+    #[name = "Desvantagem (-1d6)"]
+    #[name_localized("en-US", "Disadvantage (-1d6)")]
+    Disadvantage,
+}
+
+#[poise::command(
+    slash_command,
+    description_localized("pt-BR", "Rola os Duality Dice (Hope/Fear) de Daggerheart."),
+    description_localized("en-US", "Rolls the Duality Dice (Hope/Fear) for Daggerheart.")
+)]
 pub async fn daggerheart(
     ctx: Context<'_>,
-    #[description = "Modificador a ser somado (ex: 3, -1)"]
+    #[description_localized("pt-BR", "Modificador a ser somado (ex: 3, -1)")]
+    #[description_localized("en-US", "Modifier to add (e.g., 3, -1)")]
     modifier: i32,
-    #[description = "Dificuldade (opcional)"]
+
+    #[description_localized("pt-BR", "Dificuldade (opcional)")]
+    #[description_localized("en-US", "Difficulty (optional)")]
     difficulty: Option<i32>,
+
+    #[description_localized("pt-BR", "Rolar com Vantagem (+1d6) ou Desvantagem (-1d6)")]
+    #[description_localized("en-US", "Roll with Advantage (+1d6) or Disadvantage (-1d6)")]
+    adv_dis: Option<AdvantageState>,
+
 ) -> Result<(), Error> {
 
     let lang = if let Some(guild_id) = ctx.guild_id() {
@@ -27,7 +48,26 @@ pub async fn daggerheart(
         (rng.gen_range(1..=12), rng.gen_range(1..=12))
     };
 
-    let total_sum = hope_die + fear_die + modifier;
+    let mut adv_dis_roll = 0_i32;
+    let mut adv_dis_str = String::new();
+
+    if let Some(choice) = adv_dis {
+        let mut rng = rand::thread_rng();
+        let roll = rng.gen_range(1..=6);
+        
+        match choice {
+            AdvantageState::Advantage => {
+                adv_dis_roll = roll;
+                adv_dis_str = format!("{:+}", roll);
+            }
+            AdvantageState::Disadvantage => {
+                adv_dis_roll = -roll;
+                adv_dis_str = format!("{}", -roll);
+            }
+        }
+    }
+
+    let total_sum = hope_die + fear_die + modifier + adv_dis_roll;
     let title: String;
     let narrative_result: String;
     let color: u32;
@@ -77,6 +117,10 @@ pub async fn daggerheart(
 
     if let Some(diff) = difficulty {
         embed = embed.field(ds.difficulty, diff.to_string(), false);
+    }
+
+    if adv_dis_roll != 0 {
+        embed = embed.field(ds.adv_dis_field, adv_dis_str, false);
     }
 
     embed = embed.field(ds.modifier, modifier_str, false);
