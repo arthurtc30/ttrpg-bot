@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use tokio::sync::{RwLock, Mutex};
 use poise::serenity_prelude::GuildId;
 use rand::rngs::StdRng;
-use rand::{SeedableRng};
+use rand::{SeedableRng, Rng};
 
 mod commands;
 mod localization;
@@ -13,7 +13,7 @@ mod localization;
 pub struct Data {
     language_map: RwLock<HashMap<GuildId, localization::Language>>,
     rng: Mutex<StdRng>,
-}
+} 
 
 type Context<'a> = poise::Context<'a, Data, anyhow::Error>;
 type Error = anyhow::Error;
@@ -61,13 +61,12 @@ async fn main() -> Result<(), Error> {
                     println!("Comandos globais registrados.");
                 }
 
-                println!("Bot conectado como {}!", _ready.user.name);
-
                 println!("Gerando semente de aleatoriedade (pode demorar um pouco)...");
                 let mut seeder_rng = rand::thread_rng();
                 let rng = StdRng::from_rng(&mut seeder_rng);
                 println!("Semente gerada.");
 
+                println!("Bot conectado como {}!", _ready.user.name);
                 Ok(Data {
                     language_map: RwLock::new(HashMap::new()),
                     rng: Mutex::new(rng),

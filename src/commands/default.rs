@@ -34,7 +34,6 @@ pub async fn dice(
         let mut total = 0_i32;
         let mut rolls_list: Vec<String> = Vec::new();
         let mut modifiers_list: Vec<i32> = Vec::new();
-
         let mut rng = ctx.data().rng.lock().await;
 
         let mut is_crit = false;
@@ -133,8 +132,9 @@ pub async fn dice(
         };
 
         let title_str = format!("{} {}", ds.total, total);
-
+        
         (title_str, modifiers_str, rolls_str, is_crit, is_fumble)
+
     };
 
     let mut final_title = title_str;

@@ -54,7 +54,7 @@ pub async fn dh(
 
     if let Some(choice) = adv_dis {
         let roll = rng.gen_range(1..=6);
-
+        
         match choice {
             AdvantageState::Advantage => {
                 adv_dis_roll = roll;
