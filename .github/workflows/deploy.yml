@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "target/release/ttrpg_bot"
-          target: "~/documents/projects/ttrpg-bot/target/release/"
+          target: "~/documents/projects/ttrpg-bot/"
 
       - name: Restart the service (SSH)
         uses: appleboy/ssh-action@master
@@ -36,5 +36,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            # Reinicia o serviço (que agora aponta para o novo local)
             sudo systemctl restart ttrpg-bot.service
             sudo systemctl status ttrpg-bot.service
