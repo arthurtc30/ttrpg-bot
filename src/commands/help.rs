@@ -27,8 +27,8 @@ async fn show_roll_help(ctx: Context<'_>) -> Result<(), Error> {
     let embed = serenity::CreateEmbed::default()
         .title(s.roll_title)
         .description(s.roll_desc)
-        .field("/roll daggerheart", s.roll_daggerheart_desc, false)
-        .field("/roll dnd2014", s.roll_dnd2014_desc, false)
+        .field("/roll dh", s.roll_dh_desc, false)
+        .field("/roll dice", s.roll_dice_desc, false)
         .color(0x5865F2);
     ctx.send(poise::CreateReply::default().embed(embed)).await?;
     Ok(())

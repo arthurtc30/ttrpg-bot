@@ -2,7 +2,7 @@ use crate::{Context, Error, localization::{get_strings, Language}};
 
 #[poise::command(
     slash_command,
-    subcommands("super::daggerheart::daggerheart", "super::dnd::dnd2014")
+    subcommands("super::daggerheart::dh", "super::default::dice")
 )]
 pub async fn roll(
     ctx: Context<'_>,

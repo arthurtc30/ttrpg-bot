@@ -18,7 +18,7 @@ pub enum AdvantageState {
     description_localized("pt-BR", "Rola os Duality Dice (Hope/Fear) de Daggerheart."),
     description_localized("en-US", "Rolls the Duality Dice (Hope/Fear) for Daggerheart.")
 )]
-pub async fn daggerheart(
+pub async fn dh(
     ctx: Context<'_>,
     #[description_localized("pt-BR", "Modificador a ser somado (ex: 3, -1)")]
     #[description_localized("en-US", "Modifier to add (e.g., 3, -1)")]
@@ -41,7 +41,7 @@ pub async fn daggerheart(
         Language::default()
     };
     let s = get_strings(lang);
-    let ds = &s.daggerheart;
+    let ds = &s.dh;
 
     let (hope_die, fear_die) = {
         let mut rng = rand::thread_rng();

@@ -23,7 +23,7 @@ Displays the bot's help menu. Use subcommands to get help for specific command g
   * `/help roll`: Shows help for all dice rolling commands.
   * `/help config`: Shows help for all configuration commands.
 
-### ✅ `/roll daggerheart`
+### ✅ `/roll dh`
 
 Rolls the Duality Dice (Hope/Fear) for the Daggerheart system. This command is **fully functional**.
 
@@ -34,13 +34,13 @@ Rolls the Duality Dice (Hope/Fear) for the Daggerheart system. This command is *
   * `adv_dis` (Optional): Choose to roll with Advantage (`+1d6`) or Disadvantage (`-1d6`).
 
 **Examples:**
-* `/roll daggerheart modifier: 2`
-* `/roll daggerheart modifier: 3 adv_dis: Advantage (+1d6) difficulty: 15`
-* `/roll daggerheart modifier: 1 adv_dis: Disadvantage (-1d6)`
+* `/roll dh modifier: 2`
+* `/roll dh modifier: 3 adv_dis: Advantage (+1d6) difficulty: 15`
+* `/roll dh modifier: 1 adv_dis: Disadvantage (-1d6)`
 
-### ✅ `/roll dnd2014`
+### ✅ `/roll dice`
 
-Rolls D\&D-style dice strings, including complex modifiers, advantage (`>`), and disadvantage (`<`).
+Rolls default dice strings, including complex modifiers, advantage (`>`), and disadvantage (`<`).
 
 **Examples:**
 
@@ -51,7 +51,7 @@ Rolls D\&D-style dice strings, including complex modifiers, advantage (`>`), and
   * `2d10 + 3 + 1d6`
   * `2>d10 + 3 + 1d6` (Rolls 2d10, takes the highest, then adds 3, then rolls 1d6 and adds it)
 
-> _Note: some of these rolls are not used in regular DnD, but they are included for completeness._
+> _Note: some of these rolls are not used in regular D20 TTRPGs, but they are included for completeness._
 
 -----
 

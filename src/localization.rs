@@ -41,7 +41,7 @@ pub struct DaggerheartStrings {
     pub adv_dis_field: &'static str,
 }
 
-pub struct DndStrings {
+pub struct DiceStrings {
     pub total: &'static str,
     pub modifiers: &'static str,
     pub rolls: &'static str,
@@ -62,8 +62,8 @@ pub struct HelpStrings {
     pub overview_footer: &'static str,
     pub roll_title: &'static str,
     pub roll_desc: &'static str,
-    pub roll_daggerheart_desc: &'static str,
-    pub roll_dnd2014_desc: &'static str,
+    pub roll_dh_desc: &'static str,
+    pub roll_dice_desc: &'static str,
     pub config_title: &'static str,
     pub config_desc: &'static str,
     pub config_language_desc: &'static str,
@@ -79,15 +79,15 @@ pub struct ConfigStrings {
 }
 
 pub struct Strings {
-    pub daggerheart: DaggerheartStrings,
-    pub dnd: DndStrings,
+    pub dh: DaggerheartStrings,
+    pub dice: DiceStrings,
     pub roll: RollStrings,
     pub config: ConfigStrings,
     pub help: HelpStrings,
 }
 
 const PT_STRINGS: Strings = Strings {
-    daggerheart: DaggerheartStrings {
+    dh: DaggerheartStrings {
         critical_success: "💥 Sucesso Crítico! 💥",
         action_success: "✅ Sucesso!",
         action_fail: "❌ Falha.",
@@ -103,7 +103,7 @@ const PT_STRINGS: Strings = Strings {
         extra_damage: "*(Se for um ataque, causa dano extra)*",
         adv_dis_field: "🎲 Vantagem/Desvantagem (1d6)",
     },
-    dnd: DndStrings {
+    dice: DiceStrings {
         total: "🎯 Total",
         modifiers: "⚖️ Modificadores",
         rolls: "🎲 Rolagens",
@@ -113,7 +113,7 @@ const PT_STRINGS: Strings = Strings {
         crit_failure: "💀 Falha Crítica!",
     },
     roll: RollStrings {
-        please_choose: "Por favor, escolha um sistema (ex: /roll daggerheart ...)",
+        please_choose: "Por favor, escolha um sistema (ex: /roll dice, /roll dh ...)",
     },
     config: ConfigStrings {
         invalid_lang: "Idioma inválido. Use 'Português (BR)' ou 'English'.",
@@ -130,8 +130,8 @@ const PT_STRINGS: Strings = Strings {
         overview_footer: "Exemplo: /help roll",
         roll_title: "Ajuda para: /roll",
         roll_desc: "Comando-pai para todas as rolagens de sistema.",
-        roll_daggerheart_desc: "Rola os Duality Dice (Hope/Fear) de Daggerheart.",
-        roll_dnd2014_desc: "Rola dados no formato D&D (ex: 2d20+5, 2>d20).",
+        roll_dh_desc: "Rola os Duality Dice (Hope/Fear) de Daggerheart.",
+        roll_dice_desc: "Rola dados padrão (ex: 2d20+5, 2>d20).",
         config_title: "Ajuda para: /config",
         config_desc: "Comando-pai para todas as configurações do bot.",
         config_language_desc: "Define o idioma do bot para este servidor.",
@@ -139,7 +139,7 @@ const PT_STRINGS: Strings = Strings {
 };
 
 const EN_STRINGS: Strings = Strings {
-    daggerheart: DaggerheartStrings {
+    dh: DaggerheartStrings {
         critical_success: "💥 Critical Success! 💥",
         action_success: "✅ Success!",
         action_fail: "❌ Failure.",
@@ -155,7 +155,7 @@ const EN_STRINGS: Strings = Strings {
         extra_damage: "*(If this is an attack, it deals extra damage)*",
         adv_dis_field: "🎲 Advantage/Disadvantage (1d6)",
     },
-    dnd: DndStrings {
+    dice: DiceStrings {
         total: "🎯 Total",
         modifiers: "⚖️ Modifiers",
         rolls: "🎲 Rolls",
@@ -165,7 +165,7 @@ const EN_STRINGS: Strings = Strings {
         crit_failure: "💀 Critical Failure!",
     },
     roll: RollStrings {
-        please_choose: "Please choose a system (e.g., /roll daggerheart ...)",
+        please_choose: "Please choose a system (e.g., /roll dh ...)",
     },
     config: ConfigStrings {
         invalid_lang: "Invalid language. Use 'Português (BR)' or 'English'.",
@@ -182,8 +182,8 @@ const EN_STRINGS: Strings = Strings {
         overview_footer: "Example: /help roll",
         roll_title: "Help for: /roll",
         roll_desc: "Parent command for all system rolls.",
-        roll_daggerheart_desc: "Rolls the Duality Dice (Hope/Fear) for Daggerheart.",
-        roll_dnd2014_desc: "Rolls D&D-style dice (e.g., 2d20+5, 2>d20).",
+        roll_dh_desc: "Rolls the Duality Dice (Hope/Fear) for Daggerheart.",
+        roll_dice_desc: "Rolls default dice (e.g., 2d20+5, 2>d20).",
         config_title: "Help for: /config",
         config_desc: "Parent command for all bot configurations.",
         config_language_desc: "Sets the bot's language for this server.",

@@ -5,10 +5,10 @@ use poise::serenity_prelude as serenity;
 
 #[poise::command(
     slash_command,
-    description_localized("pt-BR", "Rola dados no formato D&D (ex: 2d20+5, 2>d20)."),
-    description_localized("en-US", "Rolls D&D-style dice (e.g., 2d20+5, 2>d20).")
+    description_localized("pt-BR", "Rola dados no formato padrão (ex: 2d20+5, 2>d20)."),
+    description_localized("en-US", "Rolls default  dice (e.g., 2d20+5, 2>d20).")
 )]
-pub async fn dnd2014(
+pub async fn dice(
     ctx: Context<'_>,
     #[description_localized("pt-BR", "O dado a rolar (ex: 1d20, 2>d20-1, 2<d10 + 2)")]
     #[description_localized("en-US", "The dice to roll (e.g., 1d20, 2>d20-1, 2<d10 + 2)")]
@@ -21,7 +21,7 @@ pub async fn dnd2014(
         Language::default()
     };
     let s = get_strings(lang);
-    let ds = &s.dnd;
+    let ds = &s.dice;
 
     let (title_str, modifiers_str, rolls_str, is_crit, is_fumble) = {
         #[derive(Debug, PartialEq, Eq)]
