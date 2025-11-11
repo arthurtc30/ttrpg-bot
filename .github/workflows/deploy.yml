@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "target/release/ttrpg_bot"
-          target: "~/documents/projects/ttrpg-bot/"
+          target: "~/documents/projects/ttrpg-bot/ttrpg_bot"
 
       - name: Restart the service (SSH)
         uses: appleboy/ssh-action@master
