@@ -2,6 +2,8 @@ use crate::{Context, Error, localization::{get_strings, Language}};
 
 #[poise::command(
     slash_command,
+    description_localized("pt-BR", "Comando-pai para todas as rolagens de sistema"),
+    description_localized("en-US", "Parent command for all system rolls"),
     subcommands("super::daggerheart::dh", "super::default::dice")
 )]
 pub async fn roll(
