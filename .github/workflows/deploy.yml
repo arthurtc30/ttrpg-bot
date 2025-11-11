@@ -36,6 +36,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Reinicia o serviço (que agora aponta para o novo local)
+            chmod +x /home/ubuntu/documents/projects/ttrpg-bot/ttrpg_bot
             sudo systemctl restart ttrpg-bot.service
             sudo systemctl status ttrpg-bot.service
