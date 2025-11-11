@@ -43,8 +43,9 @@ pub async fn dh(
     let s = get_strings(lang);
     let ds = &s.dh;
 
+    let mut rng = ctx.data().rng.lock().await;
+
     let (hope_die, fear_die) = {
-        let mut rng = rand::thread_rng();
         (rng.gen_range(1..=12), rng.gen_range(1..=12))
     };
 
@@ -52,9 +53,8 @@ pub async fn dh(
     let mut adv_dis_str = String::new();
 
     if let Some(choice) = adv_dis {
-        let mut rng = rand::thread_rng();
         let roll = rng.gen_range(1..=6);
-        
+
         match choice {
             AdvantageState::Advantage => {
                 adv_dis_roll = roll;
